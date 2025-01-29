@@ -16,6 +16,9 @@ I highly suggest to run this application in IntelliJ as this is the environment 
 ## 1. Structure of my assignment
 
 * The general architecture of the system is provided below in a handwritten schema.
+
+![alt text](attachments/IMG_9287.png)
+
 * I have created mainly two applications:
 
         1. weather_application: A REST API 
@@ -65,5 +68,3 @@ I highly suggest to run this application in IntelliJ as this is the environment 
 ```
 
 ### Task 3: http://localhost:8080/
-
-
