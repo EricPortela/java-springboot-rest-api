@@ -38,3 +38,32 @@ I highly suggest to run this application in IntelliJ as this is the environment 
       
 ## 3. Console client
 
+
+
+## 4. Endpoints
+
+### Task 1: http://localhost:8080/average-temperature
+
+```json
+{
+  "averageTemperature": -2.7499999999999996,
+  "status": "Success"
+}
+```
+
+
+### Task 2: http://localhost:8080/rainfall
+
+```json
+{
+  "start": "2024-09-01",
+  "end": "2025-01-01",
+  "rainfall": 267.6,
+  "unit": "mm",
+  "status": "Success"
+}
+```
+
+### Task 3: http://localhost:8080/
+
+
