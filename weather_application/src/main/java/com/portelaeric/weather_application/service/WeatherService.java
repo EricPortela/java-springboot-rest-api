@@ -2,7 +2,6 @@ package com.portelaeric.weather_application.service;
 
 import com.portelaeric.weather_application.dataModels.rain.RainFallLastMonthsResponse;
 import com.portelaeric.weather_application.dataModels.rain.RainResponse;
-import com.portelaeric.weather_application.dataModels.rain.StationRain;
 import com.portelaeric.weather_application.dataModels.rain.ValueRain;
 import com.portelaeric.weather_application.dataModels.temperature.AverageTemperatureResponse;
 import com.portelaeric.weather_application.dataModels.temperature.StationTemperature;
@@ -104,18 +103,18 @@ public class WeatherService {
 
             // Handle case where no valid data was found
             if (count == 0) {
-                return new RainFallLastMonthsResponse(null, null, null, "mm");
+                return new RainFallLastMonthsResponse(null, null, null, "mm", "No valid rainfall data available");
             }
 
             // Convert timestamps to readable date strings
             String start = (startDate != null) ? convertUnixTimestampToString(startDate) : null;
             String end = (endDate != null) ? convertUnixTimestampToString(endDate) : null;
 
-            return new RainFallLastMonthsResponse(start, end, totalRainfall, "mm");
+            return new RainFallLastMonthsResponse(start, end, totalRainfall, "mm", "Success");
 
         } catch (Exception e) {
             e.printStackTrace();
-            return new RainFallLastMonthsResponse(null, null, null, "mm");
+            return new RainFallLastMonthsResponse(null, null, null, "mm", "Error fetching rainfall data");
         }
     }
 

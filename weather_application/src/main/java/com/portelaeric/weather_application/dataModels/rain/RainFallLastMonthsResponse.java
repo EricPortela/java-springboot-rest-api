@@ -6,12 +6,14 @@ public class RainFallLastMonthsResponse {
     private String end;
     private Double rainfall;
     private String unit;
+    private String status;
 
-    public RainFallLastMonthsResponse(String start, String end, Double rainfall, String unit) {
+    public RainFallLastMonthsResponse(String start, String end, Double rainfall, String unit, String status) {
         this.start = start;
         this.end = end;
         this.rainfall = rainfall;
         this.unit = unit;
+        this.status = status;
     }
 
     public String getStart() {
@@ -41,5 +43,9 @@ public class RainFallLastMonthsResponse {
     public String getUnit() { return unit; }
 
     public void setUnit(String unit) { this.unit = unit; }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) {this.status = status;}
 
 }
