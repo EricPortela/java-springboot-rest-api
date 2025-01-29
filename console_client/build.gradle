@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.portelaeric'
+
+repositories {
+    mavenCentral() 
+}
+
+dependencies {
+    implementation 'org.json:json:20210307'  
+}
