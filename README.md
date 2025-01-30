@@ -74,7 +74,7 @@ I highly suggest to run this application in IntelliJ as this is the environment 
 
 ### Task 3: http://localhost:8080/
 
-````json
+```json
 {
   "institutes": [
     {
