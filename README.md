@@ -72,7 +72,7 @@ I highly suggest to run this application in IntelliJ as this is the environment 
 * Uses this SMHI-endpoint: https://opendata-download-metobs.smhi.se/api/version/latest/parameter/23/station/53430/period/latest-months/data.json
 
 
-### Task 3: http://localhost:8080/
+### Task 3: http://localhost:8080/temperature-institutes
 
 ```json
 {
