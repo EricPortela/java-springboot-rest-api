@@ -9,9 +9,20 @@
     * REST-API service and 
     * connect it with a simple client that one can interact with from the console/terminal
 
-## 1. Prerequisite
+## 1. Prerequisite + Installation
 
-I highly suggest to run this application in IntelliJ as this is the environment I have used. I could not make it work in VSCode.
+### Prerequisite
+
+* I highly suggest to run this application in IntelliJ as this is the environment I have used. I could not make it work in VSCode.
+
+### Installation
+
+1. clone repo
+2. Open up weather_application and console_client in two separate windows in IntelliJ 
+3. CD to each of the application's root folder and run `gradle build`
+4. Run weather_application (REST API)
+5. Run console_client and interact with it!
+
 
 ## 2. Structure of my assignment
 
@@ -130,3 +141,6 @@ I highly suggest to run this application in IntelliJ as this is the environment 
       2. test{method_name}Temperature_NoValidData(): Tests when data received from SMHIAPIClient is 'missing'
       3. test{method_name}Temperature_ErrorFetchingData(): Tests when data received from SMHIAPIClient returned an 'error'
 
+## 7. Regarding Task 3!
+* Here I decided to put the logic behind the 100ms pause between each printout as well as the cancellation function in my console_client. The reason is because the purpose of the REST API should only be to expose the data provided through the three endpoints.
+* The cancellation function works by basically wrapping the entire print-out logic of each institute + the temperature in a Thread-object. This one is stopped when the enter-key is pressed!

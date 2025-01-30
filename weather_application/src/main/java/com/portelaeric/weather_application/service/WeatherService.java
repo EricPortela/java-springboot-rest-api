@@ -138,7 +138,7 @@ public class WeatherService {
                         count ++;
                     } catch (NumberFormatException e) {
                         // Handle invalid values or missing temperatures gracefully
-                        return new TemperatureAllInstitutesResponse(new ArrayList<>(), "Invalid rainfall value: ");
+                        return new TemperatureAllInstitutesResponse(new ArrayList<>(), "Invalid temperature value");
                     }
                 }
             }

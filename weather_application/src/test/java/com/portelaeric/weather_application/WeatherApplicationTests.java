@@ -1,5 +1,6 @@
 package com.portelaeric.weather_application;
 
+import com.portelaeric.weather_application.dataModels.instituteTemperature.TemperatureAllInstitutesResponse;
 import com.portelaeric.weather_application.dataModels.rain.RainFallLastMonthsResponse;
 import com.portelaeric.weather_application.dataModels.rain.RainResponse;
 import com.portelaeric.weather_application.dataModels.rain.StationRain;
@@ -15,6 +16,7 @@ import org.mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -193,6 +195,103 @@ class WeatherApplicationTests {
         assertEquals("Error fetching rainfall data", response.getStatus());
         assertNull(response.getRainfall());
     }
+
+
+
+
+
+
+
+
+
+    @Test
+    public void testTemperatureInstitute_Success() throws Exception {
+
+        // STEP 1 - I insert a mock datapoint with temperature value of -6.2 degress
+        ValueTemperature valueTemperature1 = new ValueTemperature();
+        valueTemperature1.setValue("-6.2");
+
+        StationTemperature stationTemperature1 = new StationTemperature();
+        stationTemperature1.setKey("188790");
+        stationTemperature1.setName("Abisko Aut");
+        stationTemperature1.setValue(Arrays.asList(valueTemperature1));
+
+        // STEP 2 - I insert a mock datapoint with temperature value of -6.7 degress
+        ValueTemperature valueTemperature2 = new ValueTemperature();
+        valueTemperature2.setValue("-6.7");  // The temperature value for Abisko Aut station
+
+        StationTemperature stationTemperature2 = new StationTemperature();
+        stationTemperature2.setKey("158990");
+        stationTemperature2.setName("Abraur");
+        stationTemperature2.setValue(Arrays.asList(valueTemperature2));
+
+        // STEP 3 - I insert a mock datapoint with a missing temperature value
+        StationTemperature stationTemperature3 = new StationTemperature();
+        stationTemperature3.setKey("148990");
+        stationTemperature3.setName("Lund");
+        stationTemperature3.setValue(Arrays.asList());  // No temperature values
+
+        TemperatureResponse temperatureResponse = new TemperatureResponse();
+        temperatureResponse.setStation(Arrays.asList(stationTemperature1, stationTemperature2, stationTemperature3));
+
+        // Mock smhiApiClient to return the mocked data
+        doReturn(temperatureResponse).when(smhiApiClient).getTemperatureData();
+
+        // Call the method
+        TemperatureAllInstitutesResponse response = weatherService.getTemperatureForAllInstitutes();
+
+        // Assert the response
+        assertNotNull(response);
+        assertEquals("Success", response.getStatus());
+
+        assertEquals("Abisko Aut", response.getInstitutes().get(0).getInstituteName());
+        assertEquals(-6.2, response.getInstitutes().get(0).getTemperature());
+
+        assertEquals("Abraur", response.getInstitutes().get(1).getInstituteName());
+        assertEquals(-6.7, response.getInstitutes().get(1).getTemperature());
+
+    }
+
+
+
+    @Test
+    public void testTemperatureInstitute_NoValidData() throws Exception {
+        // Create mock temperature data with no valid temperature values
+        StationTemperature stationTemperature2 = new StationTemperature();
+        stationTemperature2.setValue(Arrays.asList()); // No temperature data
+
+        TemperatureResponse temperatureResponse = new TemperatureResponse();
+        temperatureResponse.setStation(Arrays.asList(stationTemperature2));
+
+        // Make smhiApiClient return the above fake data
+        doReturn(temperatureResponse).when(smhiApiClient).getTemperatureData();
+
+        // Call the average temperature method
+        TemperatureAllInstitutesResponse response = weatherService.getTemperatureForAllInstitutes();
+
+        // Assert the response for no valid temperature data
+        assertNotNull(response);
+        assertEquals("No valid temperature data available", response.getStatus());
+        assertEquals(new ArrayList<>(), response.getInstitutes());
+    }
+
+    @Test
+    public void testTemperatureInstitute_ErrorFetchingDataa() throws Exception {
+        //Make smhiApiClient throw an exception
+        when(smhiApiClient.getRainfallData()).thenThrow(new RuntimeException("API error"));
+
+        // Call the average temperature method
+        TemperatureAllInstitutesResponse response = weatherService.getTemperatureForAllInstitutes();
+
+        // Assert the response for error
+        assertNotNull(response);
+        assertEquals("Error fetching temperature data", response.getStatus());
+        assertNull(response.getInstitutes());
+    }
+
+
+
+
 
 
 }
