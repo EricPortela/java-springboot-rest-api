@@ -1,18 +1,19 @@
 package com.portelaeric.weather_application.service;
 
+import com.portelaeric.weather_application.dataModels.instituteTemperature.InstituteTemperature;
+import com.portelaeric.weather_application.dataModels.instituteTemperature.TemperatureAllInstitutesResponse;
 import com.portelaeric.weather_application.dataModels.rain.RainFallLastMonthsResponse;
 import com.portelaeric.weather_application.dataModels.rain.RainResponse;
 import com.portelaeric.weather_application.dataModels.rain.ValueRain;
-import com.portelaeric.weather_application.dataModels.temperature.AverageTemperatureResponse;
-import com.portelaeric.weather_application.dataModels.temperature.StationTemperature;
-import com.portelaeric.weather_application.dataModels.temperature.ValueTemperature;
+import com.portelaeric.weather_application.dataModels.temperature.*;
 import com.portelaeric.weather_application.smhiClient.SMHIApiClient;
-import com.portelaeric.weather_application.dataModels.temperature.TemperatureResponse;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 @Service
@@ -116,6 +117,42 @@ public class WeatherService {
         } catch (Exception e) {
             e.printStackTrace();
             return new RainFallLastMonthsResponse(null, null, null, "mm", "Error fetching rainfall data");
+        }
+    }
+
+    public TemperatureAllInstitutesResponse getTemperatureForAllInstitutes() {
+        try {
+            // Fetch the temperature data from SMHIApiClient
+            TemperatureResponse temperatureResponse = smhiApiClient.getTemperatureData();
+            int count = 0;
+            List<InstituteTemperature> list = new ArrayList<>();
+
+            for (StationTemperature station : temperatureResponse.getStation()) {
+
+                String instituteName = station.getName();
+                for (ValueTemperature value : station.getValue()) {
+                    try {
+                        Double temperature = Double.parseDouble(value.getValue());
+                        list.add(new InstituteTemperature(instituteName, temperature));
+
+                        count ++;
+                    } catch (NumberFormatException e) {
+                        // Handle invalid values or missing temperatures gracefully
+                        return new TemperatureAllInstitutesResponse(new ArrayList<>(), "Invalid rainfall value: ");
+                    }
+                }
+            }
+
+            if (count == 0) {
+                return new TemperatureAllInstitutesResponse(new ArrayList<>(), "No valid temperature data available");
+            }
+            return new TemperatureAllInstitutesResponse(list, "Success");
+
+
+        } catch (Exception e) {
+            // Handle any errors that occurred while fetching or processing the data
+            e.printStackTrace();
+            return new TemperatureAllInstitutesResponse(null, "Error fetching temperature data");
         }
     }
 

@@ -1,5 +1,6 @@
 package com.portelaeric.weather_application.controller;
 
+import com.portelaeric.weather_application.dataModels.instituteTemperature.TemperatureAllInstitutesResponse;
 import com.portelaeric.weather_application.dataModels.rain.RainFallLastMonthsResponse;
 import com.portelaeric.weather_application.dataModels.temperature.AverageTemperatureResponse;
 import com.portelaeric.weather_application.service.WeatherService;
@@ -31,5 +32,12 @@ public class WeatherController {
         RainFallLastMonthsResponse rainfall = weatherService.getTotalRainfall();
 
         return rainfall;
+    }
+
+    @GetMapping("/temperature-institutes")
+    public TemperatureAllInstitutesResponse TemperatureAllInstitutes() {
+        TemperatureAllInstitutesResponse temperatureAllInstitutes = weatherService.getTemperatureForAllInstitutes();
+
+        return temperatureAllInstitutes;
     }
 }
