@@ -28,10 +28,10 @@ public class RainResponse {
     private List<Position> position;
 
     @JsonProperty("link") // JSON property for 'link'
-    private ArrayList<Link> link;
+    private List<Link> link;
 
     @JsonProperty("value") // JSON property for 'value'
-    private ArrayList<ValueRain> value;
+    private List<ValueRain> value;
 
     // Getter and Setter for 'updated'
     public BigInteger getUpdated() {
@@ -75,20 +75,20 @@ public class RainResponse {
     }
 
     // Getter and Setter for 'link'
-    public ArrayList<Link> getLink() {
+    public List<Link> getLink() {
         return link;
     }
 
-    public void setLink(ArrayList<Link> link) {
+    public void setLink(List<Link> link) {
         this.link = link;
     }
 
     // Getter and Setter for 'value'
-    public ArrayList<ValueRain> getValue() {
+    public List<ValueRain> getValue() {
         return value;
     }
 
-    public void setValue(ArrayList<ValueRain> value) {
+    public void setValue(List<ValueRain> value) {
         this.value = value;
     }
 }

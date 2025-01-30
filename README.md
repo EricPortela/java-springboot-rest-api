@@ -54,6 +54,8 @@ I highly suggest to run this application in IntelliJ as this is the environment 
 }
 ```
 
+* Uses this SMHI-endpoint: https://opendata-download-metobs.smhi.se/api/version/latest/parameter/1/station-set/all/period/latest-hour/data.json
+
 
 ### Task 2: http://localhost:8080/rainfall
 
@@ -66,5 +68,8 @@ I highly suggest to run this application in IntelliJ as this is the environment 
   "status": "Success"
 }
 ```
+
+* Uses this SMHI-endpoint: https://opendata-download-metobs.smhi.se/api/version/latest/parameter/23/station/53430/period/latest-months/data.json
+
 
 ### Task 3: http://localhost:8080/

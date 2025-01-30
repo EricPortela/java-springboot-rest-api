@@ -40,7 +40,7 @@ public class WeatherService {
                         count++;
                     } catch (NumberFormatException e) {
                         // Handle invalid values or missing temperatures gracefully
-                        System.out.println("Invalid temperature value: " + value.getValue());
+                        return new AverageTemperatureResponse(null, "Invalid temperature value: " + value.getValue());
                     }
                 }
             }
@@ -97,7 +97,7 @@ public class WeatherService {
                     }
 
                 } catch (NumberFormatException e) {
-                    System.out.println("Invalid rainfall value: " + valueRain.getValue());
+                    return new RainFallLastMonthsResponse(null, null, null, "mm", "Invalid rainfall value: " + valueRain.getValue());
                 }
             }
 
@@ -109,6 +109,7 @@ public class WeatherService {
             // Convert timestamps to readable date strings
             String start = (startDate != null) ? convertUnixTimestampToString(startDate) : null;
             String end = (endDate != null) ? convertUnixTimestampToString(endDate) : null;
+            totalRainfall = Math.round(totalRainfall * 10.0) / 10.0;
 
             return new RainFallLastMonthsResponse(start, end, totalRainfall, "mm", "Success");
 
@@ -123,7 +124,6 @@ public class WeatherService {
         if (unixTimestamp == null) {
             return null;
         }
-
         // Create Date object directly from milliseconds
         Date date = new Date(unixTimestamp.longValue());
 
