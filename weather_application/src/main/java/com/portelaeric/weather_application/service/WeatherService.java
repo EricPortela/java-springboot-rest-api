@@ -125,7 +125,7 @@ public class WeatherService {
             // Fetch the temperature data from SMHIApiClient
             TemperatureResponse temperatureResponse = smhiApiClient.getTemperatureData();
             int count = 0;
-            List<InstituteTemperature> list = new ArrayList<>();
+            List<InstituteTemperature> institutes = new ArrayList<>();
 
             for (StationTemperature station : temperatureResponse.getStation()) {
 
@@ -133,7 +133,7 @@ public class WeatherService {
                 for (ValueTemperature value : station.getValue()) {
                     try {
                         Double temperature = Double.parseDouble(value.getValue());
-                        list.add(new InstituteTemperature(instituteName, temperature));
+                        institutes.add(new InstituteTemperature(instituteName, temperature));
 
                         count ++;
                     } catch (NumberFormatException e) {
@@ -146,7 +146,7 @@ public class WeatherService {
             if (count == 0) {
                 return new TemperatureAllInstitutesResponse(new ArrayList<>(), "No valid temperature data available");
             }
-            return new TemperatureAllInstitutesResponse(list, "Success");
+            return new TemperatureAllInstitutesResponse(institutes, "Success");
 
 
         } catch (Exception e) {

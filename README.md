@@ -73,3 +73,31 @@ I highly suggest to run this application in IntelliJ as this is the environment 
 
 
 ### Task 3: http://localhost:8080/
+
+````json
+{
+  "institutes": [
+    {
+      "instituteName": "Abisko Aut",
+      "temperature": -3.6
+    },
+    {
+      "instituteName": "AdelsÃ¶ A",
+      "temperature": 1.5
+    },
+    {
+      "instituteName": "Arjeplog A",
+      "temperature": -7.3
+    },
+    {
+      "instituteName": "Arvidsjaur A",
+      "temperature": -6.7
+    },
+    {
+      "instituteName": "Arvika A",
+      "temperature": 0.5
+    }
+  ],
+  "status": "Success"
+}
+```
