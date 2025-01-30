@@ -113,3 +113,20 @@ I highly suggest to run this application in IntelliJ as this is the environment 
 ```
 
 * Uses this SMHI-endpoint: https://opendata-download-metobs.smhi.se/api/version/latest/parameter/1/station-set/all/period/latest-hour/data.json
+
+
+## 6. Test cases for the REST API
+
+* Decided to only implement test cases for the REST API given the fact that the majority of the logic lies in here
+* More specifically I'm testing the methods found in WeatherService.java since the business logic is found here as well as the fact that I handle the various exceptions here.
+* For the test cases I have mainly used the following frameworks:
+
+    * Mockito: for mocking behaviour of the SMHIApiClient.java.
+    * JUnit: Using the assert methods to ensure that the returned data is same as the expected one.
+
+* I have made three test for each method in the WeatherService.java. The general structure of the test for each method is:
+
+      1. test{method_name}Temperature_Success(): Tests when the data received from SMHIAPIClient is 'okay'
+      2. test{method_name}Temperature_NoValidData(): Tests when data received from SMHIAPIClient is 'missing'
+      3. test{method_name}Temperature_ErrorFetchingData(): Tests when data received from SMHIAPIClient returned an 'error'
+
