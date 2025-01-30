@@ -13,7 +13,7 @@
 
 I highly suggest to run this application in IntelliJ as this is the environment I have used. I could not make it work in VSCode.
 
-## 1. Structure of my assignment
+## 2. Structure of my assignment
 
 * The general architecture of the system is provided below in a handwritten schema.
 
@@ -24,7 +24,7 @@ I highly suggest to run this application in IntelliJ as this is the environment 
         1. weather_application: A REST API 
         2. console_client: Client that is run in the console 
 
-## 2. REST-API Structure
+## 3. REST-API Structure
 
 * The main code of the application is found under 
 
@@ -39,7 +39,7 @@ I highly suggest to run this application in IntelliJ as this is the environment 
       4. smhiClient: A client which interacts with SMHI's API and more specifically the endpoints of interest in order to retrieve the neccessary data for the tasks
       (5. WeatherApplication.java: The entry-point for the application, includes main-class of course)
       
-## 3. Console client
+## 4. Console client
 
 * The main code of the application is found under
 
@@ -53,7 +53,7 @@ I highly suggest to run this application in IntelliJ as this is the environment 
 
 
 
-## 4. Endpoints
+## 5. Endpoints of the REST API
 
 ### Task 1: http://localhost:8080/average-temperature
 
