@@ -135,7 +135,7 @@
     * Mockito: for mocking behaviour of the SMHIApiClient.java.
     * JUnit: Using the assert methods to ensure that the returned data is same as the expected one.
 
-* I have made three test for each method in the WeatherService.java. The general structure of the test for each method is:
+* I have made three test cases for each method in the WeatherService.java. The general structure of the test cases for each method is:
 
       1. test{method_name}Temperature_Success(): Tests when the data received from SMHIAPIClient is 'okay'
       2. test{method_name}Temperature_NoValidData(): Tests when data received from SMHIAPIClient is 'missing'
