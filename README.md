@@ -28,7 +28,7 @@
 
 * The general architecture of the system is provided below in a handwritten schema.
 
-![alt text](attachments/IMG_9287.png)
+![alt text](attachments/IMG_9291.png)
 
 * I have created mainly two applications:
 
