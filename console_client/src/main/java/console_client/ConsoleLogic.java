@@ -1,11 +1,11 @@
 package console_client;
 
 import java.io.BufferedReader;
-import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Map;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -48,8 +48,39 @@ public class ConsoleLogic {
         }
     }
 
-    public void taskThree() {
+    public void taskThree(String endpoint) {
+        try {
+            JSONObject json = fetchFromEndpoint(endpoint);
 
+            JSONArray institutes = json.getJSONArray("institutes");
+
+            Thread keyListenerThread = new Thread(() -> {
+
+                for (int i = 0; i<institutes.length(); i++) {
+
+                    JSONObject institute = institutes.getJSONObject(i);
+
+                    String instituteName = institute.getString("instituteName");
+                    Double instituteTemperature = institute.getDouble("temperature");
+
+                    System.out.println(instituteName + ": " + instituteTemperature);
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt(); //Restores the prev sleeping t
+                    }
+                }
+            });
+
+            keyListenerThread.start(); // Start listening for key presses
+            System.in.read();
+            keyListenerThread.stop();
+        }
+
+        catch(Exception ex) {
+            System.out.println("Something went wrong with task 3...");
+        }
     }
 
 

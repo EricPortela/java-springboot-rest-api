@@ -28,7 +28,8 @@ public class ConsoleApplication {
                     break;
 
                 case 3:
-                    System.out.println("Not implemented yet!");
+                    String urlEndpoint3 = "temperature-institutes";
+                    consoleLogic.taskThree(urlEndpoint3);
                     break;
 
                 default:

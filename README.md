@@ -41,6 +41,16 @@ I highly suggest to run this application in IntelliJ as this is the environment 
       
 ## 3. Console client
 
+* The main code of the application is found under
+
+    ``` console_client/src/main/java/console_client ```
+
+* I have divided the application into 2 parts
+
+      1. ConsoleLogic.java: The logic behind the Console App. Includes mainly three methods that essentially parse the data exposed at the three endpoints my REST Service exposes. Meaning one method for each task/endpoint. There is also a fourth method which fetches the data from any endpoint and checks that the staus code is OK (200).
+      2. ConsoleApplication.java: Has the main method of the console application.
+
+
 
 
 ## 4. Endpoints
@@ -101,3 +111,5 @@ I highly suggest to run this application in IntelliJ as this is the environment 
   "status": "Success"
 }
 ```
+
+* Uses this SMHI-endpoint: https://opendata-download-metobs.smhi.se/api/version/latest/parameter/1/station-set/all/period/latest-hour/data.json
