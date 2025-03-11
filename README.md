@@ -1,19 +1,15 @@
-# axis-programming-assignment
+# java-springboot-rest-api
 
 
 ## 0. Motivation
 
-* I decided to approach this asignment from a full-stack standpoint and with the duties in this role in mind. 
+### About
+
+* I decided to approach this asignment from a full-stack standpoint. 
 
 * Although one could argue that a possible solution for the tasks could have been implemented in a more easy and straight-forward way, I wanted to showcase my skills in building...
     * REST-API service and 
     * connect it with a simple client that one can interact with from the console/terminal
-
-## 1. Prerequisite + Installation
-
-### Prerequisite
-
-* I highly suggest to run this application in IntelliJ as this is the environment I have used. I could not make it work in VSCode.
 
 ### Installation
 
