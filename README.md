@@ -7,7 +7,7 @@
 
 * I decided to approach this asignment from a full-stack standpoint. 
 
-* Although one could argue that a possible solution for the tasks could have been implemented in a more easy and straight-forward way, I wanted to showcase my skills in building...
+* Although one could argue that a possible solution could have been implemented in a more easy and straight-forward way, I wanted to showcase my skills in building...
     * REST-API service and 
     * connect it with a simple client that one can interact with from the console/terminal
 
@@ -137,6 +137,6 @@
       2. test{method_name}Temperature_NoValidData(): Tests when data received from SMHIAPIClient is 'missing'
       3. test{method_name}Temperature_ErrorFetchingData(): Tests when data received from SMHIAPIClient returned an 'error'
 
-## 7. Regarding Task 3!
+## 7. Regarding logic of last api-endpoint!
 * Here I decided to put the logic behind the 100ms pause between each printout as well as the cancellation function in my console_client. The reason is because the purpose of the REST API should only be to expose the data provided through the three endpoints.
 * The cancellation function works by basically wrapping the entire print-out logic of each institute + the temperature in a Thread-object. This one is stopped when the enter-key is pressed!
